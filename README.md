@@ -169,3 +169,189 @@ Total value = 160 + 80 = 240
 ```
 
 ---
+---
+
+# **4. Divide and Conquer Algorithms**
+
+## **Quick Sort**
+📌 **Problem Statement:**  
+Sort an array using the **divide and conquer** strategy.
+
+### **Algorithm Steps**
+1. **Choose a pivot element** (usually the last or middle element).
+2. **Partition the array**:
+   - Place elements **smaller** than the pivot on the left.
+   - Place elements **greater** than the pivot on the right.
+3. **Recursively** apply Quick Sort on the left and right partitions.
+4. **Combine the sorted partitions.**
+
+---
+
+### **Example Walkthrough**
+```plaintext
+Input: [6, 3, 8, 5, 2, 7, 4]
+```
+✅ **Step 1: Choose pivot (last element: `4`)**  
+✅ **Step 2: Partition**  
+- Move elements < `4` to the left, > `4` to the right  
+- Swaps: `[3, 2, 4, 6, 8, 7, 5]`  
+✅ **Step 3: Recursively sort left and right**  
+Left: `[3, 2]` → Pivot: `2` → `[2, 3]`  
+Right: `[6, 8, 7, 5]` → Pivot: `5` → `[5, 6, 7, 8]`  
+
+✅ **Final Sorted Array:**  
+```plaintext
+[2, 3, 4, 5, 6, 7, 8]
+```
+
+---
+
+## **Merge Sort**
+📌 **Problem Statement:**  
+Sort an array using **Divide and Conquer**.
+
+### **Algorithm Steps**
+1. **Divide** array into two halves.
+2. **Recursively sort** both halves.
+3. **Merge** the two sorted halves.
+
+---
+
+### **Example Walkthrough**
+```plaintext
+Input: [6, 3, 8, 5, 2, 7, 4]
+```
+✅ **Step 1: Split recursively**
+```plaintext
+Left: [6, 3, 8, 5]
+Right: [2, 7, 4]
+```
+✅ **Step 2: Split further**
+```plaintext
+Left: [6, 3] → Sorted: [3, 6]
+Right: [8, 5] → Sorted: [5, 8]
+```
+✅ **Step 3: Merge sorted halves**
+```plaintext
+[3, 6] + [5, 8] → [3, 5, 6, 8]
+[2, 7] + [4] → [2, 4, 7]
+```
+✅ **Step 4: Merge final arrays**
+```plaintext
+[3, 5, 6, 8] + [2, 4, 7] → [2, 3, 4, 5, 6, 7, 8]
+```
+
+✅ **Final Sorted Array:**  
+```plaintext
+[2, 3, 4, 5, 6, 7, 8]
+```
+
+---
+
+## **Min-Max Algorithm (Finding Min & Max)**
+📌 **Problem Statement:**  
+Find the **minimum** and **maximum** values in an array.
+
+### **Algorithm Steps**
+1. **Divide** the array into two halves.
+2. **Recursively find** min & max in each half.
+3. **Compare** results from both halves to get the final min & max.
+
+---
+
+### **Example Walkthrough**
+```plaintext
+Input: [7, 2, 9, 1, 5, 6]
+```
+✅ **Step 1: Split into halves**
+```plaintext
+Left: [7, 2, 9]
+Right: [1, 5, 6]
+```
+✅ **Step 2: Find min & max in each half**
+```plaintext
+Left: Min = 2, Max = 9
+Right: Min = 1, Max = 6
+```
+✅ **Step 3: Compare across halves**
+```plaintext
+Overall Min = min(2, 1) = 1
+Overall Max = max(9, 6) = 9
+```
+
+✅ **Final Result:**  
+```plaintext
+Min = 1, Max = 9
+```
+
+---
+
+## **Matrix Chain Multiplication**
+📌 **Problem Statement:**  
+Find the optimal way to **multiply matrices** to minimize computations.
+
+### **Algorithm Steps**
+1. **Use a DP table `dp[i][j]`** to store min multiplication costs.
+2. **Iterate** through matrix chains of increasing length.
+3. **Compute the minimum multiplications** needed for each split.
+4. **Return the optimal cost from `dp[1][n]`.**
+
+---
+
+### **Example Walkthrough**
+```plaintext
+Matrices: A1 (10×20), A2 (20×30), A3 (30×40)
+```
+✅ **Step 1: Compute multiplication cost**
+```plaintext
+(A1×A2) = 10×20×30 = 6000
+(A2×A3) = 20×30×40 = 24000
+```
+✅ **Step 2: Choose the optimal order**
+```plaintext
+(A1×A2) first, then (A1A2 × A3)
+Total cost = 6000 + 24000 = 30000
+```
+
+✅ **Final Answer:**  
+```plaintext
+Optimal cost = 30000
+```
+
+---
+
+# **5. Fibonacci Series (Matrix Exponentiation)**
+📌 **Problem Statement:**  
+Compute the `n`th Fibonacci number efficiently.
+
+### **Algorithm Steps**
+1. **Use the matrix recurrence formula**:
+   ```
+   | F(n)   | = | 1 1 |^(n-1)  * | 1 |
+   | F(n-1) |   | 1 0 |         | 0 |
+   ```
+2. **Exponentiate** the matrix in `O(log n)`.
+3. **Extract** the Fibonacci number from the result.
+
+---
+
+### **Example Walkthrough**
+```plaintext
+Find F(5)
+```
+✅ **Step 1: Compute matrix power**
+```plaintext
+M^4 = | 1 1 |^4 = | 5 3 |
+      | 1 0 |   | 3 2 |
+```
+✅ **Step 2: Multiply with initial vector**
+```plaintext
+Result = M^4 × | 1 | = | 5 |
+                 | 0 |   | 3 |
+```
+✅ **Final Answer:**  
+```plaintext
+F(5) = 5
+```
+
+---
